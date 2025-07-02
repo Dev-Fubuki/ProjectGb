@@ -1,0 +1,562 @@
+    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+
+    :root {
+    --primary: #ffffff;
+    }
+
+    body {
+    position: relative;
+    background: #ffffff;
+    font-family: "Inter", "Roboto", "sans-serif";
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    }
+
+    header {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 20 !important;
+    background: transparent;
+    }
+
+    header::before,
+    header::after {
+    content: none;
+    }
+
+    header .menu {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    display: flex;
+    align-items: center;
+    font-size: 2.5em;
+    margin-right: 20px;
+    }
+
+    header {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    z-index: 20 !important;
+    background: transparent;
+    height: 65px;
+    }
+
+    header::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: #cc0000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    }
+
+    header::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    }
+
+    header .menu {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: white;
+    font-size: 2.5em;
+    z-index: 11;
+    }
+
+    header .logo {
+    position: absolute;
+    padding-left: 30px;
+    margin-left: 10px;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    }
+
+    header .logo img {
+    width: 85%;
+    height: auto;
+    object-fit: fill;
+    filter: brightness(0) invert(1);
+    }
+
+
+    .search {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    width: 220px;
+    z-index: 10;
+    }
+
+    .search input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.4)
+    );
+    border-radius: 24px;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    font-size: 1em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    }
+
+    .search input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    }
+
+    .search input:focus {
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.5)
+    );
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .search ion-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 1.3em;
+    }
+
+    .banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(-65deg, #1b54c7, #df211b);
+    align-items: end;
+    overflow: hidden;
+    transition: 0.5s;
+    }
+
+    .banner::before {
+    position: absolute;
+    content: "";
+    top: 100px;
+    left: 100px;
+    right: 100px;
+    bottom: 100px;
+    background: transparent;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(30px);
+    transition: 0.5s;
+    }
+
+    .nav {
+    position: absolute;
+    left: 100px;
+    top: 165px;
+    bottom: 100px;
+    background: transparent;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    width: 0px;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: 0.5s;
+    z-index: 1000;
+    }
+
+    .nav.active {
+    width: 200px;
+    visibility: visible;
+    opacity: 1;
+    }
+
+    .nav li {
+    list-style: none;
+    }
+
+    .nav li a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--primary);
+    text-transform: uppercase;
+    opacity: 0;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+    }
+
+    .nav.active li a {
+    opacity: 1;
+    }
+
+    .nav li a:hover {
+    transform: scale(1.15) translateY(-2px);
+    transition: all 0.35s ease;
+    cursor: pointer;
+    letter-spacing: 1px;
+    }
+
+    .swiper {
+    width: 100%;
+    height: 100vh;
+    transition: 0.5s;
+    }
+
+    .swiper .bjj-img {
+    position: absolute;
+    z-index: 10;
+    max-width: 35%;
+    max-height: 70%;
+    object-fit: contain;
+    opacity: 0.85;
+    visibility: visible;
+    bottom: 100px;
+    left: 20%;
+    transition: ease-in-out 0.5s;
+    transform-origin: bottom;
+    filter: grayscale(30%);
+    }
+
+    .swiper .bjj-img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+    transition: ease-in-out 0.5s;
+    }
+
+    .swiper.active {
+    opacity: 0;
+    visibility: hidden;
+    }
+
+    .swiper .control {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 105px;
+    width: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    }
+
+    .swiper .swiper-button-next {
+    transform: rotateZ(-90deg);
+    width: 25px;
+    height: 25px;
+    position: static;
+    }
+
+    .swiper .swiper-button-prev {
+    transform: rotateZ(-90deg);
+    width: 25px;
+    height: 25px;
+    position: static;
+    }
+
+    .swiper .swiper-button-next::after,
+    .swiper .swiper-button-prev::after {
+    font-size: 0.8em;
+    line-height: 0;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border-radius: 50%;
+    transition: 1.5s;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-rendering: geometricPrecision;
+    }
+
+    .swiper .swiper-button-next:hover::after,
+    .swiper .swiper-button-prev:hover::after {
+    border-radius: 50%;
+    background: rgba(13, 13, 13, 0.104);
+    color: var(--primary);
+    transition: 0.3s ease-in-out;
+    }
+
+    .swiper .swiper-pagination {
+    position: absolute;
+    right: 50%;
+    top: 40%;
+    transform: translate(50%, -50%);
+    z-index: 10;
+    }
+
+    .swiper .swiper-pagination .swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+    background: transparent;
+    border: 1px solid var(--primary);
+    opacity: 1;
+    z-index: 10;
+    }
+
+    .swiper .swiper-pagination .swiper-pagination-bullet-active {
+    background: var(--primary);
+    transform: scale(1.1);
+    }
+
+    .banner .content {
+    position: absolute;
+    z-index: 100;
+    max-width: 600px;
+    left: 57%;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 30px;
+    transition: 0.5s;
+    }
+
+    .banner .content.active {
+    transform: translateY(-50%) scale(0);
+    }
+
+    .banner .content h2 {
+    font-size: 3.5em;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-align: right;
+    }
+
+    .banner .content p {
+    font-size: 0.8em;
+    color: var(--primary);
+    text-align: end;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+    }
+
+    .banner .content a {
+    text-decoration: none;
+    text-decoration: uppercase;
+    font-weight: 300;
+    font-size: 1.1em;
+    color: #ffffff;
+    background: transparent;
+    padding: 10px 20px;
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    transform: 0.3s;
+    }
+
+    .banner .content a:hover {
+    background: var(--primary);
+    color: #1b54c7;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+    }
+
+    .bg-video {
+    aspect-ratio: 16 / 9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: 0;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.2)
+    }
+
+    .bg-video.active {
+    opacity: 1;
+    visibility: visible;
+    }
+
+    .banner .video {
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    width: 40%;
+    height: 150px;
+    padding: 0;
+    display: flex;
+    justify-self: space-between;
+    align-items: center;
+    background: transparent;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    }
+
+    .banner .video video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .banner .video video:hover {
+    transform: scale(1.05);
+    transition: 0.5s ease-in-out;
+    }
+
+    .banner .video .services {
+    position: relative;
+    padding: 10px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    }
+
+    .banner .video .services:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 36, 72, 0.1);
+    transition: 0.3s ease-in-out;
+    }
+
+    .banner .video h3 {
+    color: var(--primary);
+    text-decoration: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    text-align: center;
+    }
+
+    .banner .video p {
+    color: var(--primary);
+    font-size: 0.7em;
+    text-align: match-parent;
+    font-weight: 300;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .banner .video .play {
+    padding: 20px;
+    height: 100%;
+    background: #1b54c7;
+    display: flex;
+    align-items: center;
+    object-fit: cover;
+    }
+
+    .banner .video .play ion-icon {
+    color: #ffffff;
+    font-size: 3em;
+    transition: 0.3s ease-in-out;
+    }
+
+    .banner .video .play ion-icon:hover {
+    transform: scale(1.2);
+    filter: brightness(1.3);
+    animation: pulse 0.6s ease-in-out;
+    }
+
+    @keyframes pulse {
+    0% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+    }
+
+    .banner .video .play .close {
+    display: none;
+    font-size: 3em;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    }
+
+    .banner .video .play .close:hover {
+    transform: scale(1.2);
+    filter: brightness(1.3);
+    animation: pulseClose 0.6s ease-in-out;
+    }
+
+    @keyframes pulseClose {
+    0% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+    }
+
+    .banner .video .play.active .close {
+    display: block;
+    cursor: pointer;
+    }
+
+    .banner .video .play.active .open {
+    display: none;
+    }
